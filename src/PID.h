@@ -31,6 +31,15 @@ class PID {
    */
   double TotalError();
 
+  /*
+   * Parameter optimization using twiddle
+   * @param the tolerance of the algorithm
+   */
+  void Twiddle(double tolerance);
+
+  bool is_initialized;
+  double best_error;
+
  private:
   /**
    * PID Errors
@@ -38,6 +47,7 @@ class PID {
   double p_error;
   double i_error;
   double d_error;
+  double prev_cte;
 
   /**
    * PID Coefficients
@@ -45,6 +55,7 @@ class PID {
   double Kp;
   double Ki;
   double Kd;
+
 };
 
 #endif  // PID_H
